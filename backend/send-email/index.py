@@ -1,5 +1,6 @@
 import os
 import json
+import base64
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -54,7 +55,12 @@ def handler(event: dict, context) -> dict:
     msg.attach(MIMEText(html, 'html', 'utf-8'))
 
     with smtplib.SMTP_SSL(smtp_host, smtp_port) as server:
-        server.login(smtp_user, smtp_password)
+        server.ehlo()
+        b64_user = base64.b64encode(smtp_user.encode('utf-8')).decode('ascii')
+        b64_pass = base64.b64encode(smtp_password.encode('utf-8')).decode('ascii')
+        server.docmd('AUTH', 'LOGIN')
+        server.docmd(b64_user)
+        server.docmd(b64_pass)
         server.sendmail(smtp_user, recipient, msg.as_bytes())
 
     return {
