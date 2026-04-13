@@ -36,6 +36,13 @@ def handler(event: dict, context) -> dict:
     smtp_password = os.environ['SMTP_PASSWORD']
     recipient = 'operator@биотехнология68.рф'
 
+    def to_punycode(email: str) -> str:
+        local, domain = email.rsplit('@', 1)
+        return local + '@' + domain.encode('idna').decode('ascii')
+
+    smtp_user_ascii = to_punycode(smtp_user)
+    recipient_ascii = to_punycode(recipient)
+
     html = f"""
     <h2>Новая заявка с сайта</h2>
     <table cellpadding="8" style="border-collapse:collapse;font-size:15px;">
@@ -50,18 +57,14 @@ def handler(event: dict, context) -> dict:
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = f'Заявка от {name} — {phone}'
-    msg['From'] = smtp_user
-    msg['To'] = recipient
+    msg['From'] = smtp_user_ascii
+    msg['To'] = recipient_ascii
     msg.attach(MIMEText(html, 'html', 'utf-8'))
 
     with smtplib.SMTP_SSL(smtp_host, smtp_port) as server:
         server.ehlo()
-        b64_user = base64.b64encode(smtp_user.encode('utf-8')).decode('ascii')
-        b64_pass = base64.b64encode(smtp_password.encode('utf-8')).decode('ascii')
-        server.docmd('AUTH', 'LOGIN')
-        server.docmd(b64_user)
-        server.docmd(b64_pass)
-        server.sendmail(smtp_user, recipient, msg.as_bytes())
+        server.login(smtp_user_ascii, smtp_password)
+        server.sendmail(smtp_user_ascii, recipient_ascii, msg.as_bytes())
 
     return {
         'statusCode': 200,
