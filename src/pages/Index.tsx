@@ -80,11 +80,22 @@ const reviews = [
 export default function Index() {
   const [form, setForm] = useState({ name: "", phone: "", company: "", type: "food", volume: "", comment: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    try {
+      await fetch("https://functions.poehali.dev/65608b91-b0cb-491f-8c0d-9b8c9ee07471", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+    } finally {
+      setSending(false);
+      setSubmitted(true);
+    }
   };
 
   const scrollTo = (id: string) => {
@@ -453,10 +464,11 @@ export default function Index() {
 
                   <button
                     type="submit"
-                    className="w-full bg-eco-500 hover:bg-eco-400 text-white py-4 rounded-xl font-medium text-base transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-eco-500/25 flex items-center justify-center gap-2"
+                    disabled={sending}
+                    className="w-full bg-eco-500 hover:bg-eco-400 disabled:opacity-60 disabled:cursor-not-allowed text-white py-4 rounded-xl font-medium text-base transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-eco-500/25 flex items-center justify-center gap-2"
                   >
-                    <Icon name="Send" size={18} />
-                    Отправить заявку
+                    <Icon name={sending ? "Loader" : "Send"} size={18} className={sending ? "animate-spin" : ""} />
+                    {sending ? "Отправляем..." : "Отправить заявку"}
                   </button>
 
                   <p className="text-eco-700 text-xs text-center">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
