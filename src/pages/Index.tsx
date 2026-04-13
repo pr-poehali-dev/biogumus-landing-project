@@ -72,7 +72,7 @@ const reviews = [
   {
     name: "Иван Терентьев",
     role: "Эколог гипермаркета",
-    text: "Нам нужна была компания с полным пакетом документов. ЭкоЦикл предоставили всё что нужно — паспорта, акты, сертификаты.",
+    text: "Нам нужна была компания с полным пакетом документов. БиоТехнология68 предоставили всё что нужно — паспорта, акты, сертификаты.",
     rating: 5
   }
 ];
@@ -102,7 +102,7 @@ export default function Index() {
             <div className="w-8 h-8 bg-eco-500 rounded-full flex items-center justify-center">
               <Icon name="Leaf" size={16} className="text-white" />
             </div>
-            <span className="font-cormorant text-xl font-semibold text-eco-100 tracking-wide">ЭкоЦикл</span>
+            <span className="font-cormorant text-xl font-semibold text-eco-100 tracking-wide">БиоТехнология68</span>
           </button>
 
           <div className="hidden md:flex items-center gap-8 text-sm text-eco-300">
@@ -474,9 +474,9 @@ export default function Index() {
             <div className="w-6 h-6 bg-eco-800 rounded-full flex items-center justify-center">
               <Icon name="Leaf" size={12} className="text-eco-500" />
             </div>
-            <span className="font-cormorant text-eco-400 text-base">ЭкоЦикл</span>
+            <span className="font-cormorant text-eco-400 text-base">БиоТехнология68</span>
           </div>
-          <div className="text-center">© 2024 ЭкоЦикл. Лицензированная переработка органических отходов.</div>
+          <div className="text-center">© 2024 БиоТехнология68. Лицензированная переработка органических отходов.</div>
           <div className="flex gap-6">
             <button onClick={() => scrollTo("services")} className="hover:text-eco-400 transition-colors">Услуги</button>
             <button onClick={() => scrollTo("contact")} className="hover:text-eco-400 transition-colors">Контакты</button>
