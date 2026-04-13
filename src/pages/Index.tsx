@@ -341,9 +341,9 @@ export default function Index() {
               </p>
               <div className="space-y-5">
                 {[
-                  { icon: "Phone", text: "+7 (4752) 123-45-67" },
+                  { icon: "Phone", text: "+7 (900) 495-69-46" },
                   { icon: "Mail", text: "info@ecocycle.ru" },
-                  { icon: "MapPin", text: "Тамбов и Тамбовская область" },
+                  { icon: "MapPin", text: "Тамбовский район, пос. Комсомолец, промзона" },
                   { icon: "Clock", text: "Пн–Пт 8:00–20:00, Сб 9:00–17:00" },
                 ].map(({ icon, text }) => (
                   <div key={text} className="flex items-center gap-4 text-eco-300">
