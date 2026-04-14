@@ -2,6 +2,8 @@ import { useState } from "react";
 import NavBar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
 import ContentSections from "@/components/ContentSections";
+import ReviewsSection from "@/components/ReviewsSection";
+import DirectorForm from "@/components/DirectorForm";
 import ContactSection from "@/components/ContactSection";
 
 export default function Index() {
@@ -35,6 +37,8 @@ export default function Index() {
       <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} scrollTo={scrollTo} />
       <HeroSection scrollTo={scrollTo} />
       <ContentSections />
+      <ReviewsSection />
+      <DirectorForm />
       <ContactSection
         form={form}
         setForm={setForm}

@@ -54,26 +54,6 @@ const portfolio = [
   { name: "Сеть кафе «Зелёный дворик»", volume: "1.2 т/мес", type: "Пищевые отходы", since: "2023" },
 ];
 
-const reviews = [
-  {
-    name: "Андрей Климов",
-    role: "Директор ресторана «Берёзка»",
-    text: "Работаем уже 3 года. Чётко по расписанию, водители вежливые, документы всегда в порядке. Никаких проблем с проверками.",
-    rating: 5
-  },
-  {
-    name: "Ольга Мещерякова",
-    role: "Завхоз мебельной фабрики",
-    text: "Опилки вывозят оперативно — производство не стоит. Цена честная, договор прозрачный. Очень довольны сотрудничеством.",
-    rating: 5
-  },
-  {
-    name: "Иван Терентьев",
-    role: "Эколог гипермаркета",
-    text: "Нам нужна была компания с полным пакетом документов. БиоТехнология68 предоставили всё что нужно — паспорта, акты, сертификаты.",
-    rating: 5
-  }
-];
 
 export default function ContentSections() {
   return (
@@ -190,36 +170,6 @@ export default function ContentSections() {
         </div>
       </section>
 
-      {/* REVIEWS */}
-      <section id="reviews" className="py-24 bg-eco-950">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16">
-            <div className="text-eco-500 text-sm tracking-widest uppercase mb-3">Отзывы</div>
-            <h2 className="font-cormorant text-4xl md:text-5xl font-light text-eco-100">Что говорят клиенты</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {reviews.map((r) => (
-              <div key={r.name} className="bg-eco-900/50 border border-eco-800/40 rounded-2xl p-7">
-                <div className="flex gap-1 mb-5">
-                  {Array.from({ length: r.rating }).map((_, i) => (
-                    <span key={i} className="text-eco-500 text-sm">★</span>
-                  ))}
-                </div>
-                <p className="text-eco-300 text-sm leading-relaxed mb-6 italic">«{r.text}»</p>
-                <div className="flex items-center gap-3 pt-5 border-t border-eco-800/40">
-                  <div className="w-9 h-9 bg-eco-700/50 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-eco-400 text-sm font-cormorant">{r.name[0]}</span>
-                  </div>
-                  <div>
-                    <div className="text-eco-200 text-sm font-medium">{r.name}</div>
-                    <div className="text-eco-600 text-xs">{r.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }
