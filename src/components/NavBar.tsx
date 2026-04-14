@@ -18,7 +18,7 @@ export default function NavBar({ menuOpen, setMenuOpen, scrollTo }: NavBarProps)
         </button>
 
         <div className="hidden md:flex items-center gap-8 text-sm text-eco-300">
-          {[["services","Услуги"],["process","Процесс"],["advantages","Преимущества"],["portfolio","Клиенты"],["reviews","Отзывы"]].map(([id, label]) => (
+          {[["services","Услуги"],["process","Процесс"],["advantages","Преимущества"],["portfolio","Клиенты"],["reviews","Отзывы"],["contact","Контакты"]].map(([id, label]) => (
             <button key={id} onClick={() => scrollTo(id)} className="hover:text-eco-400 transition-colors">{label}</button>
           ))}
         </div>
