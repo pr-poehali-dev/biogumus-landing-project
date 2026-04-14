@@ -43,9 +43,11 @@ export default function ReviewsSection() {
 
   useEffect(() => {
     fetch(REVIEWS_URL)
-      .then(r => r.json())
-      .then(data => {
-        if (data.reviews && data.reviews.length > 0) setReviews(data.reviews);
+      .then(r => r.text())
+      .then(text => {
+        const data = JSON.parse(text);
+        const parsed = typeof data === "string" ? JSON.parse(data) : data;
+        if (parsed.reviews && parsed.reviews.length > 0) setReviews(parsed.reviews);
       })
       .catch(() => {});
   }, []);
@@ -66,7 +68,10 @@ export default function ReviewsSection() {
       let media_type = null;
       if (mediaFile) {
         const buf = await mediaFile.arrayBuffer();
-        media_b64 = btoa(String.fromCharCode(...new Uint8Array(buf)));
+        const bytes = new Uint8Array(buf);
+        let binary = "";
+        for (let i = 0; i < bytes.byteLength; i++) binary += String.fromCharCode(bytes[i]);
+        media_b64 = btoa(binary);
         media_type = mediaFile.type;
       }
       await fetch(REVIEWS_URL, {
