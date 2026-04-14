@@ -169,9 +169,7 @@ export default function ContactSection({ form, setForm, submitted, sending, hand
       <footer className="border-t border-eco-800/30 py-12 bg-eco-950">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-eco-600 text-sm">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-eco-800 rounded-full flex items-center justify-center">
-              <Icon name="Leaf" size={12} className="text-eco-500" />
-            </div>
+            <img src="https://cdn.poehali.dev/projects/e19ceacf-d22c-4345-9a99-b4f42b3d5b86/files/1bc2f2c3-488c-48c6-afe3-50d06db79415.jpg" alt="БТ68" className="w-6 h-6 rounded-full object-cover" />
             <span className="font-cormorant text-eco-400 text-base">БиоТехнология68</span>
           </div>
           <div className="text-center">© 2024 БиоТехнология68. Лицензированная переработка органических отходов.</div>

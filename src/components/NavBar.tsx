@@ -11,9 +11,7 @@ export default function NavBar({ menuOpen, setMenuOpen, scrollTo }: NavBarProps)
     <nav className="fixed top-0 left-0 right-0 z-50 bg-eco-950/90 backdrop-blur-md border-b border-eco-800/30">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <button onClick={() => scrollTo("hero")} className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-eco-500 rounded-full flex items-center justify-center">
-            <Icon name="Leaf" size={16} className="text-white" />
-          </div>
+          <img src="https://cdn.poehali.dev/projects/e19ceacf-d22c-4345-9a99-b4f42b3d5b86/files/1bc2f2c3-488c-48c6-afe3-50d06db79415.jpg" alt="БТ68" className="w-8 h-8 rounded-full object-cover" />
           <span className="font-cormorant text-xl font-semibold text-eco-100 tracking-wide">БиоТехнология68</span>
         </button>
 
