@@ -36,7 +36,7 @@ export default function ContactSection({ form, setForm, submitted, sending, hand
               <div className="space-y-5">
                 {[
                   { icon: "Phone", text: "+7 (900) 495-69-46" },
-                  { icon: "Mail", text: "info@ecocycle.ru" },
+                  { icon: "Mail", text: "operator@биотехнология68.рф" },
                   { icon: "MapPin", text: "Тамбовский район, пос. Комсомолец, промзона" },
                   { icon: "Clock", text: "Пн–Пт 8:00–20:00, Сб 9:00–17:00" },
                 ].map(({ icon, text }) => (
