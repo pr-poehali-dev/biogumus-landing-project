@@ -1,4 +1,5 @@
 import Icon from "@/components/ui/icon";
+import DirectorForm from "@/components/DirectorForm";
 
 interface FormState {
   name: string;
@@ -161,6 +162,8 @@ export default function ContactSection({ form, setForm, submitted, sending, hand
           </div>
         </div>
       </section>
+
+      <DirectorForm />
 
       {/* FOOTER */}
       <footer className="border-t border-eco-800/30 py-12 bg-eco-950">
